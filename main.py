@@ -1,14 +1,15 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-g = 0
+g = 9.81
 
 # coefficient of retituation -v_up / v_down
 cor = 0.6
 
-xmax = 10
+xmax = 2
 
 dt = 0.005
+
 
 x0, y0 = 0, 3
 vx0, vy0 = 1, 0
@@ -28,7 +29,7 @@ def get_position(t=0):
 
 def init():
     ax.set_xlim(0, xmax)
-    ax.set_ylim(0, 5)
+    ax.set_ylim(0, y0)
     line.set_data(xdata, ydata)
     ball.set_center((x0, y0))
     return line, ball
@@ -54,7 +55,6 @@ interval = 1000*dt
 ani = animation.FuncAnimation(fig,
                               animate,
                               get_position,
-                              blit = True,
                               repeat = False,
                               interval = interval,
                               init_func = init
